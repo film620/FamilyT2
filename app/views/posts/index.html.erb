@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>사진 보기</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>올린이</th>
+      <th>제목</th>
+      <th>내용</th>
+      <!--<th colspan="3">  테이블 열 합치기 </th>-->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.name %></td>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= link_to '사진보기', post %></td>
+        <td><%= link_to '수정하기', edit_post_path(post) %></td>
+        <td><%= link_to '삭제하기', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '새 사진 올리기', new_post_path %>
