@@ -12,7 +12,12 @@
 
 <!--바디 시작 <인텍스 부분>-->
   <body>
+      <!--경고 메세지-->
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
     <!--상단 네비-->
+    
    <nav>
      <li> <%= link_to '패밀리 타임',root_path %>
       </li>
@@ -22,7 +27,7 @@
             <a class="nav-link js-scroll-trigger">로그인 유저 : <%= current_user.email %></a>
       </li>
             <% end %>
-            
+
       <li class="nav-item">
             <% if user_signed_in? %>
             <%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" }, class: "nav-link js-scroll-trigger" %>

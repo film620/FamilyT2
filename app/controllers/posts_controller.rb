@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :check_user
+
+
 
   # GET /posts
   # GET /posts.json
@@ -66,7 +70,23 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-
+    
+    def check_login
+      #로그인 안했으면 redirect
+      
+      
+    end
+    
+    
+    
+    def check_user
+      check_login()
+      if params[:action] != 'show' and params[:action] != 'index'
+        redirect_to '/'
+      end 
+        
+    end
+   
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:name, :title, :content)
